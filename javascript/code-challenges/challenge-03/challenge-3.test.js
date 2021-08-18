@@ -26,7 +26,7 @@ function BinarySearch(array , number){
 
 
 
-describe('Test challenge 02' , ()=>{
+describe('Test challenge 03' , ()=>{
     test ('Should return a modified array ', ()=>{
         expect(BinarySearch([2,4,6,-8], 6 )).toStrictEqual(2);
         expect(BinarySearch([42,8,15,23,42], 16 )).toStrictEqual(-1);
