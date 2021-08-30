@@ -14,6 +14,7 @@ describe('seudo queue', () => {
         pesudo.enqueue(15);
         pesudo.enqueue(10);
         pesudo.enqueue(5);
+        
 
         expect(pesudo.stackA.top.value).toBe(5);
         expect(pesudo.stackA.top.next.value).toBe(10);
