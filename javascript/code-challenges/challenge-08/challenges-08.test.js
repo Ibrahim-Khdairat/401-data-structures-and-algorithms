@@ -176,6 +176,7 @@ describe('linked-list tests- Challange 08 Testing Zip-list function ', () => {
         lL2.append(4);
         lL2.append(6);
         lL2.append(8);
+        
 
         expect(zipLl(lL1, lL2).toString()).toEqual(`{${1}}-->{${2}}-->{${3}}-->{${4}}-->{${5}}-->{${6}}-->{${8}}-->{null}`);
         lL1 = new LinkedList();
