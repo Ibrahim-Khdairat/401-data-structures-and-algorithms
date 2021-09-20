@@ -1,4 +1,5 @@
 'use strict';
+
 class Node {
     constructor(value) {
         this.value = value;
@@ -9,16 +10,21 @@ class Node {
 class LinkedList {
     constructor() {
         this.head = null;
+        this.length = 0;
     }
     append(value) {
         let node = new Node(value);
         if (!this.head) {
             this.head = node;
+             this.length ++;
         } else {
             let currentNode = this.head;
             while (currentNode.next) {
                 currentNode = currentNode.next;
+
             }
+          this.length ++;
+
             currentNode.next = node;
         }
     }
@@ -27,6 +33,8 @@ class LinkedList {
         let currentNode = this.head;
         while (currentNode.next) {
             if (currentNode.value === value) {
+            this.length +=1;
+
                 currentNode.next = {
                     value: node.value,
                     next: currentNode.next
@@ -41,6 +49,8 @@ class LinkedList {
         let currentNode = this.head;
         while (currentNode) {
             if (currentNode.value === value) {
+            this.length +=1;
+
                 const currentVal = currentNode.value;
                 currentNode.value = node.value;
                 currentNode.next = {
@@ -64,43 +74,54 @@ class LinkedList {
         }
         return string;
     }
-    kthFromEnd(k) {
-        let currentNode = this.head;
-        let n = 1;
-        while (currentNode.next) {
-            currentNode = currentNode.next;
-            n++;
+    // kthFromEnd(k) {
+    //     let currentNode = this.head;
+    //     let n = 1;
+    //     while (currentNode.next) {
+    //         currentNode = currentNode.next;
+    //         n++;
+    //     }
+    //     if (k >= 0) {
+    //         let node = n - k;
+    //         if (node >= 1) {
+    //             currentNode = this.head;
+    //             for (let i = 0; i < node - 1; i++) {
+    //                 currentNode = currentNode.next;
+    //             }
+    //             if (Math.floor(n / k) === 2) {
+    //                 return 'Happy Path';
+    //             }
+    //             return currentNode.value;
+
+    //         } else {
+    //             return 'Exception';
+
+    //         }
+
+    //     } else {
+    //         return 'K Not Positive';
+    //     }
+    // }
+
+      kthFromEnd(k) {
+        console.log('length = ',this.length);
+        console.log('k = ', k);
+        if (k < 0 || k >= this.length) {
+            return 'Wrong Value of k';
         }
-        if (k >= 0) {
-            let node = n - k;
-            if (node >= 1) {
-                currentNode = this.head;
-                for (let i = 0; i < node - 1; i++) {
-                    currentNode = currentNode.next;
-                }
-                if (Math.floor(n / k) === 2) {
-                    return 'Happy Path';
-                }
-                return currentNode.value;
+        else {
+            let current = this.head
+            for (let i = 1; i < (this.length - k) ; i++) {
 
-            } else {
-                return 'Exception';
-
+                current = current.next;
             }
 
-        } else {
-            return 'K Not Positive';
+            return current.value;
+
         }
     }
-    length(lL) {
-        let current = lL.head;
-        let length = 0;
-        while (current) {
-            current = current.next;
-            length++;
-        }
-        return length;
-    }
+
+   
 }
 
 let newLl = new LinkedList();
