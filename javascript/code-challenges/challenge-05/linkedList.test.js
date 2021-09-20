@@ -14,12 +14,15 @@ describe('Linked List', ()=>{
     });
     it('should check if a new node is inserted', ()=>{
         // arrange
-      let newNode = new Node();
-      let value = 'new Value'
+        let value = 'new Value'
+      let newNode = new Node(value);
+      let list = new LinkedList();
+      list.insert(value);
+      
         // act
-     newNode.value = value;
+
         // assert
-        expect(newNode.value).toEqual(value);
+        expect(list.head).toEqual(newNode);
     });
     it('should check if the list has the selected node', () =>{
         // arrange
