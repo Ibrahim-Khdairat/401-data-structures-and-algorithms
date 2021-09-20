@@ -1,4 +1,6 @@
 'use strict';
+
+
 class Node {
     constructor(value) {
         this.value = value;
@@ -105,6 +107,31 @@ class LinkedList {
         }
         return length;
     }
+
+      zipList(list1, list2){
+        console.log("zip test");
+
+        let list3=new LinkedList();
+        let current1=list1.head;
+        let current2=list2.head;
+
+        while (current1 || current2) {
+            if (current1) {
+                list3.append(current1.value);
+              current1 = current1.next;
+            }
+            if (current2) {
+                list3.append(current2.value);
+              current2 = current2.next;
+            }
+          }
+
+          return `head -> ${list3.toString()} `;
+
+
+
+    }
+
 }
 let lL1 = new LinkedList();
 let lL2 = new LinkedList();
@@ -119,6 +146,10 @@ lL2.append(2);
 lL2.append(4);
 lL2.append(6);
 lL2.append(8);
+
+console.log(lL1.toString());
+console.log(lL2.toString());
+
 function zipLists(lL1, lL2) {
     let newLL = new LinkedList();
 
@@ -146,7 +177,6 @@ function zipLists(lL1, lL2) {
     }
     return newLL;
 }
-
 zipLists(lL1, lL2);
 
 
