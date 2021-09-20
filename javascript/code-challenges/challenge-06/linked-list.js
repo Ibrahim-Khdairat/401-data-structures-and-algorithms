@@ -17,7 +17,7 @@ class LinkedList {
         } else { 
             let currentNode = this.head;
             while (currentNode.next) {
-                currentNode = currentNode.next; r
+                currentNode = currentNode.next; 
             }
             currentNode.next = node; 
         }
@@ -25,7 +25,7 @@ class LinkedList {
     insertAfter(value, newVal) {
         let node = new Node(newVal);
         let currentNode = this.head;
-        while (currentNode.next) {
+        while (currentNode) {
             if (currentNode.value === value) {
                 currentNode.next = {
                     value: node.value,
@@ -66,7 +66,6 @@ class LinkedList {
     }
 }
 
-let newNode = new LinkedList();
 
 
     module.exports = LinkedList;
