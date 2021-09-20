@@ -1,5 +1,6 @@
 'use strict';
 
+
 class Node {
     constructor(value) {
         this.value = value;
@@ -8,37 +9,57 @@ class Node {
 }
 
 class LinkedList {
-    constructor () {
-        this.heed = null;
+    constructor() {
+        this.head = null;
+        // this.tail = null;
+        // this.length = 0;
     }
-
-    append(newValue) {
-        let newNode = new Node(newValue);
-
-        if (!this.head) {
-            this.head = newNode;
-        } else {
-            let currentNode = this.head;
-            while(currentNode.next){
-                currentNode = currentNode.next;
-            }
-            currentNode.next = newNode;
-        }
-    }
-
     
+    append(value) {
+        const node = new Node(value);
+        if (this.head) {
+            
+            
+            node.next = this.head;
+            
+            
+            
+        }
+        this.head = node;
+        // this.length = this.length + 1;
+        // return this;
+
+    }
+    toString() {
+      
+        let current = this.head;
+        let str=" ";
+        while (current) {
+            str=str+`[${current.value}] -> `;
+            current=current.next;
+            
+        }
+        str=str+'X';
+        return str;
+        
+    }
+
+    reverseList(list){
+        let newList=new LinkedList();
+        let current=list.head;
+
+        while(current){
+            newList.append(current.value);
+            current=current.next;
+        }
+        // console.log('hgyjytjuyk',newList);
+        return ` head ->${newList.toString()}`;
+
+    }
+
+   
+
+
 }
 
-let LinkedList_1 = new LinkedList();
-
-LinkedList_1.append(1);
-LinkedList_1.append(2);
-LinkedList_1.append(3);
-LinkedList_1.append(4);
-
-
-
-console.log(LinkedList_1);
-
-
-
+module.exports = LinkedList;
