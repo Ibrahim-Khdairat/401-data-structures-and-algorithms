@@ -1,7 +1,6 @@
 'use strict';
 
 const Node = require('./Node')
-
 class LinkedList {
     constructor() {
         this.head = null;
@@ -9,44 +8,48 @@ class LinkedList {
 
     insert(value) {
         const node = new Node(value);
-        node.next = this.head;
-        this.head = node;
-    }
-    // to initialize new node and make it a head in case we do not have one
-    // append(value) {
-    //     const node = new Node(value);
-    //     if (!this.head) {
-    //         this.head = node;
-    //         return this;
-    //     }
-    //     let current = this.head;
-    //     while (current.next) {
-    //         current = current.next;
+        //it will be excuted one time at creating new linked list
+        if (!this.head) {
+            this.head = node;
+            return this;
+        }
 
-    //     }
-    //     current.next = node;
-    //     return this;
-    // }
+        // if there is a node existed in the linked list
+        let current = this.head;
+        while (current.next) { current = current.next; }
+        current.next = node;
+
+        return this;
+    }
+   
     includes(value) {
         let currentNode = this.head;
+        let result ;
         while (currentNode.next) {
-            if (currentNode.next.value == value) {
-                return true;
+          
+            if (currentNode.value == value) {
+                result = true;
             } else {
-                return false;
+                result= false;
             }
+
+               currentNode = currentNode.next;
         }
+        return result;
     }
 
     toString() {
         let values = this.head;
         let result = [];
-        while (values.next !== null) {
-            result.push(values.value)
+        while (values) {
+            result.push(` { ${values.value} } `)
+          values = values.next;
         }
-        let strRes = result.toString();
+         result.push(` NULL `)
+        let strRes = result.join('->');
         return strRes;
     }
 }
+
 
 module.exports = LinkedList;
